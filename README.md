@@ -48,7 +48,7 @@ Create a widget that shows the number of items in the cart. This widget should b
 
 ## Components Diagram
 
-<img style="width:600px" src='./MerchStore.jpg' />
+<img style="width:600px" src='./MerchStoreDiagram.jpg' />
 
 ## Setup/Installation Requirements
 
