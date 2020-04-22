@@ -7,7 +7,7 @@ import NewItemForm from "./Items/NewItemForum";
 
 const useStyles = makeStyles((theme) => ({
   mainContent: {
-    marginTop: "60px",
+    marginTop: "80px",
   },
 }));
 

@@ -1,15 +1,8 @@
 import React from "react";
 import NewItemForum from "./NewItemForum";
 import { Button } from "@material-ui/core";
-import PropTypes from "prop-types";
-import { render } from "@testing-library/react";
 import { v4 } from "uuid";
 import ItemsList from "./ItemsList";
-
-const buttonsStyle = {
-  display: "flex",
-  justifyContent: "space-around",
-};
 
 const merchandise = [
   {
@@ -56,20 +49,32 @@ class ItemsControl extends React.Component {
     };
   }
 
-  showForum = () => {
+  showNewItemForum = () => {
     this.setState({ formVisibleOnPage: true });
   };
-  showForum = () => {
-    this.setState({ formVisibleOnPage: true });
-  };
-  hideForum = () => {
+  hideNewItemForum = () => {
     this.setState({ formVisibleOnPage: false });
+  };
+  showUpdateItemForum = () => {
+    this.setState({ formVisibleOnPage: true });
+  };
+  hideUpdateItemForum = () => {
+    this.setState({ formVisibleOnPage: false });
+  };
+  removeItem = (id) => {
+    const newItemsList = this.state.merchandiseList.filter(
+      (item) => item.id !== id
+    );
+    this.setState({ merchandiseList: newItemsList });
   };
 
   handleAddingNewItemToList = (newItem) => {
     const newMerchandiseList = this.state.merchandiseList.concat(newItem);
     this.setState({ merchandiseList: newMerchandiseList });
     this.setState({ formVisibleOnPage: false });
+  };
+  handleIncrementingItemQuantity = () => {
+    const updatedItem = { quantity: this.state.quantity + 1 };
   };
 
   render() {
@@ -81,14 +86,21 @@ class ItemsControl extends React.Component {
           <NewItemForum
             onNewItemCreation={this.handleAddingNewItemToList}
           ></NewItemForum>
-          <Button onClick={() => this.hideForum()}>Return to items</Button>
+          <Button onClick={() => this.hideNewItemForum()}>
+            Return to items
+          </Button>
         </div>
       );
     } else {
       currentlyVisibleState = (
         <div>
-          <ItemsList merchandiseList={this.state.merchandiseList} />
-          <Button onClick={() => this.showForum()}>Create a new Item</Button>
+          <ItemsList
+            onRemoveItem={this.removeItem}
+            merchandiseList={this.state.merchandiseList}
+          />
+          <Button onClick={() => this.showNewItemForum()}>
+            Create a new Item
+          </Button>
         </div>
       );
     }

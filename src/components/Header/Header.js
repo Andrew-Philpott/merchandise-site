@@ -6,6 +6,8 @@ import {
   Toolbar,
   Typography,
   makeStyles,
+  withStyles,
+  Badge,
   Button,
   InputBase,
 } from "@material-ui/core";
@@ -14,6 +16,17 @@ import HomeOutlinedIcon from "@material-ui/icons/HomeOutlined";
 import PeopleOutlineIcon from "@material-ui/icons/PeopleOutline";
 import WorkOutlineIcon from "@material-ui/icons/WorkOutline";
 import ForumOutlinedIcon from "@material-ui/icons/ForumOutlined";
+import IconButton from "@material-ui/core/IconButton";
+import DeleteIcon from "@material-ui/icons/Delete";
+
+const StyledBadge = withStyles((theme) => ({
+  badge: {
+    right: -3,
+    top: 13,
+    border: `2px solid ${theme.palette.background.paper}`,
+    padding: "0 4px",
+  },
+}))(Badge);
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -63,7 +76,11 @@ function Header() {
               <Grid item xs={2}></Grid>
               <Grid item xs={2}></Grid>
               <Grid item xs={2}>
-                <ShoppingCartIcon />
+                <IconButton aria-label="cart">
+                  <StyledBadge badgeContent={0} color="secondary">
+                    <ShoppingCartIcon />
+                  </StyledBadge>
+                </IconButton>
               </Grid>
             </Toolbar>
           </Grid>
