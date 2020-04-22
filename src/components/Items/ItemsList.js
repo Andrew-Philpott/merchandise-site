@@ -8,7 +8,7 @@ function ItemsList(props) {
       <hr />
       {props.merchandiseList.map((merch, index) => (
         <Item
-          name={merch.names}
+          name={merch.name}
           description={merch.description}
           color={merch.color}
           quantity={merch.quantity}
