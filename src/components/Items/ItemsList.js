@@ -20,8 +20,8 @@ function ItemsList(props) {
   );
 }
 
-TicketList.propTypes = {
+ItemsList.propTypes = {
   merchandiseList: PropTypes.array,
 };
 
-export default TicketList;
+export default ItemsList;

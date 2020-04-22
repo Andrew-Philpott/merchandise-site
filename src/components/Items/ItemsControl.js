@@ -4,6 +4,7 @@ import { Button } from "@material-ui/core";
 import PropTypes from "prop-types";
 import { render } from "@testing-library/react";
 import { v4 } from "uuid";
+import ItemsList from "./ItemsList";
 
 const buttonsStyle = {
   display: "flex",
@@ -51,8 +52,19 @@ class ItemsControl extends React.Component {
     this.state = {
       formVisibleOnPage: false,
       merchandiseList: merchandise,
+      buttonText: "",
     };
   }
+
+  showForum = () => {
+    this.setState({ formVisibleOnPage: true });
+  };
+  showForum = () => {
+    this.setState({ formVisibleOnPage: true });
+  };
+  hideForum = () => {
+    this.setState({ formVisibleOnPage: false });
+  };
 
   handleAddingNewItemToList = (newItem) => {
     const newMerchandiseList = this.state.merchandiseList.concat(newItem);
@@ -65,14 +77,19 @@ class ItemsControl extends React.Component {
     let addTicketButton = null;
     if (this.state.formVisibleOnPage) {
       currentlyVisibleState = (
-        <NewItemForum
-          onItemCreation={this.handleAddingNewItemToList}
-        ></NewItemForum>
+        <div>
+          <NewItemForum
+            onNewItemCreation={this.handleAddingNewItemToList}
+          ></NewItemForum>
+          <Button onClick={() => this.hideForum()}>Return to items</Button>
+        </div>
       );
-      buttonText = "Return to Ticket List";
     } else {
       currentlyVisibleState = (
-        <TicketList ticketList={this.state.merchandiseList} />
+        <div>
+          <ItemsList merchandiseList={this.state.merchandiseList} />
+          <Button onClick={() => this.showForum()}>Create a new Item</Button>
+        </div>
       );
     }
     return (

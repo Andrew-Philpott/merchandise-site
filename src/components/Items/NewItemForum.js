@@ -1,5 +1,6 @@
 import { v4 } from "uuid"; // new code
-
+import React from "react";
+import PropTypes from "prop-types";
 export default function NewItemForm(props) {
   function handleNewItemFormSubmission(event) {
     event.preventDefault();
@@ -28,4 +29,5 @@ export default function NewItemForm(props) {
 
 NewItemForm.propTypes = {
   onNewItemCreation: PropTypes.func,
+  buttonText: PropTypes.string,
 };

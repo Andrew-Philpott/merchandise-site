@@ -12,7 +12,7 @@ function Item(props) {
   );
 }
 
-Ticket.propTypes = {
+Item.propTypes = {
   id: PropTypes.string,
   name: PropTypes.string,
   description: PropTypes.string,
