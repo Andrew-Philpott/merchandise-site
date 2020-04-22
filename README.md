@@ -1,68 +1,95 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# _Merchandise Site_
 
-## Available Scripts
+#### _Working with State in React Exercise, 04.22.2020_
 
-In the project directory, you can run:
+## By: **Andrew Philpott**
 
-### `npm start`
+<!-- [![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip) -->
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+[![Project Status: Inactive – The project has reached a stable, usable state but is no longer being actively developed; support/maintenance will be provided as time allows.](https://www.repostatus.org/badges/latest/inactive.svg)](https://www.repostatus.org/#inactive)
+![LastCommit](https://img.shields.io/github/last-commit/Andrew-Philpott/farmers-market)
+![Languages](https://img.shields.io/github/languages/top/Andrew-Philpott/farmers-market)
+[![MIT license](https://img.shields.io/badge/License-MIT-orange.svg)](https://lbesson.mit-license.org/)
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+---
 
-### `npm test`
+## Table of Contents
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. [Description](#description)
+   - [Assignment Prompt](#assignment-prompt)
+2. [Component Diagram](#component-diagram)
+3. [Setup/Installation Requirements](#setup/installation-requirements)
+   - [Requirements to Run](#requirements-to-run)
+   - [Instructions](#instructions)
+   - [Other Technologies Used](#other-technologies-used)
+4. [Known Bugs](#known-bugs)
+5. [Support and Contact Details](#support-and-contact-details)
+6. [License](#license)
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Description
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+Exercise for Epicodus' Intro to Programming and C#/React course to practice building a React site that has both local and shared state with full CRUD functionality to the application.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Assignment Prompt
 
-### `npm run eject`
+Merch Site
+Build a website for selling merchandise for a band, author, sports team, or any other purveyor that interests you.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+A user should be able to do the following:
+Create, Read, Update and Delete items in the store. Items should have fields for name, description, and quantity (along with any other fields you wish to add).
+Increase or decrease the quantity of an item in the store. For instance, if a user clicks "Buy", the quantity will decrease by one. If a user clicks "Restock", it will increment by a specified number.
+When the quantity of an item is reduced to 0, the item should say "Out of Stock". A user should not be able to reduce the quantity of an item below 0.
+Further Exploration
+Create a Cart component. When a user clicks "Buy", the specified item should be added to the cart.
+A user should be able to view and remove items from the cart.
+Create a widget that shows the number of items in the cart. This widget should be updated when items are added to the cart.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Components Diagram
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+<img style="width:600px" src='./MerchStore.jpg' />
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Setup/Installation Requirements
 
-## Learn More
+### Requirements to Run
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- _Web Browser_
+- _Webpack_
+- _Node.js_
+- _NPM_
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Instructions
 
-### Code Splitting
+_This page may be viewed by:_
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+1. Download and install Node.js from the [official website](https://nodejs.org/en/download/)
+2. Clone the [repository](https://github.com/Andrew-Philpott/merchandise-site) from my [GitHub page](https://github.com/Andrew-Philpott)
+3. Use a command line/Bash to move to the project directory with `cd project-directory`
+4. Run `npm install` to get all dependencies.
+5. Run `npm run start` to start up the program
 
-### Analyzing the Bundle Size
+### Other Technologies Used
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+- _HTML_
+- _CSS_
+- _Javascript_
+- _React_
+- _ESLint_
+- _Babel_
+- _Jest_
+- _Markdown_
 
-### Making a Progressive Web App
+## Known Bugs
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+_There are currently no known bugs in this program_
 
-### Advanced Configuration
+## Support and contact details
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+_If there are any question or concerns please contact me at my email [Andrew](mailto:#andrewphilpott92@gmail.com). Thank you._
 
-### Deployment
+### License
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+_This software is licensed under the MIT license_
 
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Copyright (c) 2020 **_Andrew Philpott_**
