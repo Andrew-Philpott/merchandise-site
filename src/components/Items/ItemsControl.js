@@ -45,7 +45,6 @@ class ItemsControl extends React.Component {
     super(props);
     this.state = {
       formVisibleOnPage: false,
-      merchandiseList: merchandise,
       buttonText: "",
     };
   }
@@ -68,19 +67,48 @@ class ItemsControl extends React.Component {
     );
     this.setState({ merchandiseList: newItemsList });
   };
-  updateItem = (item) => {
-    let items = this.state.merchandiseList.filter(
-      (item) => item.id !== item.id
-    );
-    const newList = items.concat(item);
-    this.setState({ merchandiseList: newList });
+  handleEditingItemInList = (itemToEdit) => {
+    const { dispatch } = this.props;
+    const { id, name, description, color, quantity, price } = itemToEdit;
+    const action = {
+      type: "ADD_ITEM",
+      name: name,
+      description: description,
+      color: color,
+      quantity: quantity,
+      price: price,
+    };
+    dispatch(action);
+    this.setState({
+      editing: false,
+    });
   };
 
   handleAddingNewItemToList = (newItem) => {
-    const newMerchandiseList = this.state.merchandiseList.concat(newItem);
-    this.setState({ merchandiseList: newMerchandiseList });
+    const { dispatch } = this.props;
+    const { id, name, description, color, quantity, price } = newItem;
+    const action = {
+      type: "ADD_ITEM",
+      id: id,
+      name: name,
+      description: description,
+      color: color,
+      quantity: quantity,
+      price: price,
+    };
+    dispatch(action);
     this.setState({ formVisibleOnPage: false });
   };
+
+  handleDeletingItem = (id) => {
+    const { dispatch } = this.props;
+    const action = {
+      type: "DELETE_ITEM",
+      id: id,
+    };
+    dispatch(action);
+  };
+
   handleIncrementingItemQuantity = () => {
     const updatedItem = { quantity: this.state.quantity + 1 };
   };
@@ -122,6 +150,12 @@ class ItemsControl extends React.Component {
   }
 }
 
-ItemsControl = connect()(ItemsControl);
+const mapStateToProps = (state) => {
+  return {
+    masterTicketList: state,
+  };
+};
+
+ItemsControl = connect(mapStateToProps)(ItemsControl);
 
 export default ItemsControl;

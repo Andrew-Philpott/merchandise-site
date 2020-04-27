@@ -1,4 +1,4 @@
-export function ItemListReducer(state = {}, action) {
+export function itemListReducer(state = {}, action) {
   const { id, name, description, color, quantity, price } = action;
   switch (action.type) {
     case "ADD_ITEM":

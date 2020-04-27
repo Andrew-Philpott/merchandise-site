@@ -12,7 +12,7 @@ const useStyles = makeStyles({
 });
 
 export default function NewItemForm(props) {
-  const classes = useStyles();
+  // const classes = useStyles();
   function handleNewItemFormSubmission(event) {
     event.preventDefault();
     props.onNewItemCreation({
