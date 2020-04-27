@@ -5,43 +5,47 @@ import { Button } from "@material-ui/core";
 import PropTypes from "prop-types";
 
 function Item(props) {
+  const {
+    onBuyItem,
+    onRestockItem,
+    onEditItem,
+    onRemoveItem,
+    id,
+    color,
+    price,
+    quantity,
+    description,
+    name,
+  } = props;
   return (
-    <TableRow key={props.id}>
+    <TableRow key={id}>
       <TableCell component="th" scope="row">
-        {props.name}
+        {name}
       </TableCell>
-      <TableCell key={props.description} align="right">
-        {props.description}
+      <TableCell key={description} align="right">
+        {description}
       </TableCell>
-      <TableCell align="right">{props.color}</TableCell>
-      <TableCell align="right">{props.price}</TableCell>
-      <TableCell align="right">{props.quantity}</TableCell>
+      <TableCell align="right">{color}</TableCell>
+      <TableCell align="right">{price}</TableCell>
+      <TableCell align="right">{quantity}</TableCell>
       <TableCell>
-        <Button variant="outline" onClick={() => props.onBuyItem(props.id)}>
-          Buy
-        </Button>
+        <Button onClick={() => onBuyItem(id)}>Buy</Button>
       </TableCell>
       <TableCell>
-        <Button variant="outline" onClick={() => props.onRestockItem(props.id)}>
-          Restock
-        </Button>
+        <Button onClick={() => onRestockItem(id)}>Restock</Button>
       </TableCell>
       <TableCell>
-        <Button variant="outline" onClick={() => props.onEditItem(props.id)}>
-          Edit
-        </Button>
+        <Button onClick={() => onEditItem(id)}>Edit</Button>
       </TableCell>
       <TableCell>
-        <Button variant="outline" onClick={() => props.onRemoveItem(props.id)}>
-          Remove
-        </Button>
+        <Button onClick={() => onRemoveItem(id)}>Remove</Button>
       </TableCell>
     </TableRow>
   );
 }
 
 Item.propTypes = {
-  id: PropTypes.string,
+  id: PropTypes.number,
   name: PropTypes.string,
   description: PropTypes.string,
   color: PropTypes.string,

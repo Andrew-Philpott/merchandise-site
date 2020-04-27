@@ -16,6 +16,16 @@ export function itemListReducer(state = {}, action) {
       const newState = { ...state };
       delete newState[id];
       return newState;
+    case "INCREMENT_QUANTITY": {
+      const newState = { ...state };
+      newState[id].quantity += 1;
+      return newState;
+    }
+    case "DECREMENT_QUANTITY": {
+      const newState = { ...state };
+      newState[id].quantity -= 1;
+      return newState;
+    }
     default:
       return state;
   }

@@ -140,10 +140,12 @@ class ItemsControl extends React.Component {
 
   handleIncrementingItemQuantity = (id) => {
     const { dispatch } = this.props;
+    console.log("In dispatch" + dispatch);
     const action = {
       type: "INCREMENT_QUANTITY",
       id: id,
     };
+    dispatch(action);
   };
   handleDecrementingItemQuantity = (id) => {
     const { dispatch } = this.props;
@@ -151,6 +153,7 @@ class ItemsControl extends React.Component {
       type: "DECREMENT_QUANTITY",
       id: id,
     };
+    dispatch(action);
   };
 
   render() {
@@ -161,6 +164,7 @@ class ItemsControl extends React.Component {
         <div>
           <NewItemForum
             onNewItemCreation={this.handleAddingNewItemToList}
+            merchandiseList={this.props.merchandiseList}
           ></NewItemForum>
           <Button onClick={() => this.hideNewItemForum()}>
             Return to items

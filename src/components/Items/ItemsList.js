@@ -18,7 +18,13 @@ const useStyles = makeStyles({
 
 function ItemsList(props) {
   const classes = useStyles();
-
+  const {
+    onBuyItem,
+    onEditItem,
+    onRemoveItem,
+    onRestockItem,
+    merchandiseList,
+  } = props;
   return (
     <React.Fragment>
       <TableContainer component={Paper}>
@@ -39,19 +45,8 @@ function ItemsList(props) {
             </TableRow>
           </TableHead>
           <TableBody>
-            {Object.values(props.merchandiseList).map((item) => {
-              const {
-                name,
-                description,
-                color,
-                quantity,
-                price,
-                onBuyItem,
-                onRemoveItem,
-                onRestockItem,
-                onEditItem,
-                id,
-              } = item;
+            {Object.values(merchandiseList).map((item) => {
+              const { name, description, color, quantity, price, id } = item;
               return (
                 <Item
                   key={id}

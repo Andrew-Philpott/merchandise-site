@@ -12,11 +12,11 @@ const useStyles = makeStyles({
 });
 
 export default function NewItemForm(props) {
-  // const classes = useStyles();
+  const count = Object.keys(props.merchandiseList).length + 1;
   function handleNewItemFormSubmission(event) {
     event.preventDefault();
     props.onNewItemCreation({
-      id: v4(),
+      id: count,
       name: event.target.name.value,
       description: event.target.description.value,
       color: event.target.color.value,
@@ -67,4 +67,5 @@ export default function NewItemForm(props) {
 NewItemForm.propTypes = {
   onNewItemCreation: PropTypes.func,
   buttonText: PropTypes.string,
+  merchandiseList: PropTypes.object,
 };
