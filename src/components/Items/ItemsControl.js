@@ -1,9 +1,10 @@
 import React from "react";
 import NewItemForum from "./NewItemForum";
-import { Button } from "@material-ui/core";
 import { v4 } from "uuid";
 import ItemsList from "./ItemsList";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { Button } from "@material-ui/core";
 
 const merchandise = [
   {
@@ -40,6 +41,33 @@ const merchandise = [
   },
 ];
 
+// description() {
+//   return props.quantity > 0 ? props.description : "Out of stock";
+// }
+
+// buy() {
+//   return props.quantity > 0 ? (
+//     <div>
+//       <Button
+//         variant="outline"
+//         onClick={() => )}
+//       >
+//         Buy
+//       </Button>
+//     </div>
+//   ) : (
+//     <div>
+//       <Button
+//         variant="outline"
+//         disabled
+//         onClick={() => )}
+//       >
+//         Buy
+//       </Button>
+//     </div>
+//   );
+// }
+
 class ItemsControl extends React.Component {
   constructor(props) {
     super(props);
@@ -72,6 +100,7 @@ class ItemsControl extends React.Component {
     const { id, name, description, color, quantity, price } = itemToEdit;
     const action = {
       type: "ADD_ITEM",
+      id: id,
       name: name,
       description: description,
       color: color,
@@ -100,7 +129,7 @@ class ItemsControl extends React.Component {
     this.setState({ formVisibleOnPage: false });
   };
 
-  handleDeletingItem = (id) => {
+  handleRemovingItemFromList = (id) => {
     const { dispatch } = this.props;
     const action = {
       type: "DELETE_ITEM",
@@ -109,8 +138,19 @@ class ItemsControl extends React.Component {
     dispatch(action);
   };
 
-  handleIncrementingItemQuantity = () => {
-    const updatedItem = { quantity: this.state.quantity + 1 };
+  handleIncrementingItemQuantity = (id) => {
+    const { dispatch } = this.props;
+    const action = {
+      type: "INCREMENT_QUANTITY",
+      id: id,
+    };
+  };
+  handleDecrementingItemQuantity = (id) => {
+    const { dispatch } = this.props;
+    const action = {
+      type: "DECREMENT_QUANTITY",
+      id: id,
+    };
   };
 
   render() {
@@ -131,9 +171,11 @@ class ItemsControl extends React.Component {
       currentlyVisibleState = (
         <div>
           <ItemsList
-            onRemoveItem={this.removeItem}
-            merchandiseList={this.state.merchandiseList}
-            onUpdateItem={this.updateItem}
+            onRemoveItem={this.handleRemovingItemFromList}
+            onEditItem={this.handleEditingItemInList}
+            merchandiseList={this.props.merchandiseList}
+            onBuyItem={this.handleDecrementingItemQuantity}
+            onRestockItem={this.handleIncrementingItemQuantity}
           />
           <Button onClick={() => this.showNewItemForum()}>
             Create a new Item
@@ -150,9 +192,13 @@ class ItemsControl extends React.Component {
   }
 }
 
+ItemsControl.propTypes = {
+  merchandiseList: PropTypes.object,
+};
+
 const mapStateToProps = (state) => {
   return {
-    masterTicketList: state,
+    merchandiseList: state,
   };
 };
 

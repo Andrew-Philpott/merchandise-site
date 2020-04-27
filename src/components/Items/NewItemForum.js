@@ -20,8 +20,8 @@ export default function NewItemForm(props) {
       name: event.target.name.value,
       description: event.target.description.value,
       color: event.target.color.value,
-      quantity: event.target.quantity.value,
-      price: event.target.price.value,
+      quantity: parseInt(event.target.quantity.value),
+      price: parseInt(event.target.price.value),
     });
   }
   return (

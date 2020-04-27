@@ -2,78 +2,55 @@ import React from "react";
 import TableCell from "@material-ui/core/TableCell";
 import TableRow from "@material-ui/core/TableRow";
 import { Button } from "@material-ui/core";
+import PropTypes from "prop-types";
 
-class Item extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      id: props.id,
-      name: props.name,
-      description: props.description,
-      color: props.color,
-      quantity: props.quantity,
-      price: props.price,
-      onRemoveItem: props.onRemoveItem,
-    };
-  }
-  description() {
-    return this.state.quantity > 0 ? this.state.description : "Out of stock";
-  }
-
-  buy() {
-    return this.state.quantity > 0 ? (
-      <div>
-        <Button
-          variant="outline"
-          onClick={() => this.setState({ quantity: this.state.quantity - 1 })}
-        >
+function Item(props) {
+  return (
+    <TableRow key={props.id}>
+      <TableCell component="th" scope="row">
+        {props.name}
+      </TableCell>
+      <TableCell key={props.description} align="right">
+        {props.description}
+      </TableCell>
+      <TableCell align="right">{props.color}</TableCell>
+      <TableCell align="right">{props.price}</TableCell>
+      <TableCell align="right">{props.quantity}</TableCell>
+      <TableCell>
+        <Button variant="outline" onClick={() => props.onBuyItem(props.id)}>
           Buy
         </Button>
-      </div>
-    ) : (
-      <div>
-        <Button
-          variant="outline"
-          disabled
-          onClick={() => this.setState({ quantity: this.state.quantity - 1 })}
-        >
-          Buy
+      </TableCell>
+      <TableCell>
+        <Button variant="outline" onClick={() => props.onRestockItem(props.id)}>
+          Restock
         </Button>
-      </div>
-    );
-  }
-  render() {
-    return (
-      <TableRow key={this.state.name}>
-        <TableCell component="th" scope="row">
-          {this.state.name}
-        </TableCell>
-        <TableCell key={this.state.id} align="right">
-          {this.description()}
-        </TableCell>
-        <TableCell align="right">{this.state.color}</TableCell>
-        <TableCell align="right">{this.state.price}</TableCell>
-        <TableCell align="right">{this.state.quantity}</TableCell>
-        <TableCell>{this.buy()}</TableCell>
-        <TableCell>
-          <Button
-            variant="outline"
-            onClick={() => this.setState({ quantity: this.state.quantity + 1 })}
-          >
-            Restock
-          </Button>
-        </TableCell>
-        <TableCell>
-          <Button
-            variant="outline"
-            onClick={() => this.state.onRemoveItem(this.state.id)}
-          >
-            Remove
-          </Button>
-        </TableCell>
-      </TableRow>
-    );
-  }
+      </TableCell>
+      <TableCell>
+        <Button variant="outline" onClick={() => props.onEditItem(props.id)}>
+          Edit
+        </Button>
+      </TableCell>
+      <TableCell>
+        <Button variant="outline" onClick={() => props.onRemoveItem(props.id)}>
+          Remove
+        </Button>
+      </TableCell>
+    </TableRow>
+  );
 }
+
+Item.propTypes = {
+  id: PropTypes.string,
+  name: PropTypes.string,
+  description: PropTypes.string,
+  color: PropTypes.string,
+  quantity: PropTypes.number,
+  price: PropTypes.number,
+  onRemoveItem: PropTypes.func,
+  onBuyItem: PropTypes.func,
+  onRestockItem: PropTypes.func,
+  onEditItem: PropTypes.func,
+};
 
 export default Item;

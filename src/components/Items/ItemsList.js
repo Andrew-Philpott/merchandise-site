@@ -20,46 +20,67 @@ function ItemsList(props) {
   const classes = useStyles();
 
   return (
-    <TableContainer component={Paper}>
-      <Table className={classes.table} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell component="th" scope="row">
-              Products
-            </TableCell>
-            <TableCell align="right">Description</TableCell>
-            <TableCell align="right">Color</TableCell>
-            <TableCell align="right">Price</TableCell>
-            <TableCell align="right">Quantity</TableCell>
-            <TableCell align="right"></TableCell>
-            <TableCell align="right"></TableCell>
-            <TableCell align="right"></TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {props.merchandiseList.map((item) => (
-            <Item
-              key={item.name}
-              id={item.id}
-              name={item.name}
-              description={item.description}
-              color={item.color}
-              quantity={item.quantity}
-              price={item.price}
-              onRemoveItem={props.onRemoveItem}
-              onUpdateItem={props.onUpdateItem}
-            ></Item>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+    <React.Fragment>
+      <TableContainer component={Paper}>
+        <Table className={classes.table} aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              <TableCell component="th" scope="row">
+                Products
+              </TableCell>
+              <TableCell align="right">Description</TableCell>
+              <TableCell align="right">Color</TableCell>
+              <TableCell align="right">Price</TableCell>
+              <TableCell align="right">Quantity</TableCell>
+              <TableCell align="right"></TableCell>
+              <TableCell align="right"></TableCell>
+              <TableCell align="right"></TableCell>
+              <TableCell align="right"></TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {Object.values(props.merchandiseList).map((item) => {
+              const {
+                name,
+                description,
+                color,
+                quantity,
+                price,
+                onBuyItem,
+                onRemoveItem,
+                onRestockItem,
+                onEditItem,
+                id,
+              } = item;
+              return (
+                <Item
+                  key={id}
+                  id={id}
+                  name={name}
+                  description={description}
+                  color={color}
+                  quantity={quantity}
+                  price={price}
+                  onRemoveItem={onRemoveItem}
+                  onRestockItem={onRestockItem}
+                  onBuyItem={onBuyItem}
+                  onEditItem={onEditItem}
+                ></Item>
+              );
+            })}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </React.Fragment>
   );
 }
 
 ItemsList.propTypes = {
-  merchandiseList: PropTypes.array,
+  merchandiseList: PropTypes.object,
+  onBuyItem: PropTypes.func,
+  onRestockItem: PropTypes.func,
   onRemoveItem: PropTypes.func,
-  onUpdateItem: PropTypes.func,
+  onEditItem: PropTypes.func,
 };
 
 export default ItemsList;
