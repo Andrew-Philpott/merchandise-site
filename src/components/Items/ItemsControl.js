@@ -3,6 +3,7 @@ import NewItemForum from "./NewItemForum";
 import { Button } from "@material-ui/core";
 import { v4 } from "uuid";
 import ItemsList from "./ItemsList";
+import { connect } from "react-redux";
 
 const merchandise = [
   {
@@ -67,6 +68,13 @@ class ItemsControl extends React.Component {
     );
     this.setState({ merchandiseList: newItemsList });
   };
+  updateItem = (item) => {
+    let items = this.state.merchandiseList.filter(
+      (item) => item.id !== item.id
+    );
+    const newList = items.concat(item);
+    this.setState({ merchandiseList: newList });
+  };
 
   handleAddingNewItemToList = (newItem) => {
     const newMerchandiseList = this.state.merchandiseList.concat(newItem);
@@ -97,6 +105,7 @@ class ItemsControl extends React.Component {
           <ItemsList
             onRemoveItem={this.removeItem}
             merchandiseList={this.state.merchandiseList}
+            onUpdateItem={this.updateItem}
           />
           <Button onClick={() => this.showNewItemForum()}>
             Create a new Item
@@ -112,4 +121,7 @@ class ItemsControl extends React.Component {
     );
   }
 }
+
+ItemsControl = connect()(ItemsControl);
+
 export default ItemsControl;

@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  Container,
   Grid,
   AppBar,
   Toolbar,
@@ -8,16 +7,10 @@ import {
   makeStyles,
   withStyles,
   Badge,
-  Button,
-  InputBase,
 } from "@material-ui/core";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
-import HomeOutlinedIcon from "@material-ui/icons/HomeOutlined";
-import PeopleOutlineIcon from "@material-ui/icons/PeopleOutline";
-import WorkOutlineIcon from "@material-ui/icons/WorkOutline";
-import ForumOutlinedIcon from "@material-ui/icons/ForumOutlined";
+
 import IconButton from "@material-ui/core/IconButton";
-import DeleteIcon from "@material-ui/icons/Delete";
 
 const StyledBadge = withStyles((theme) => ({
   badge: {

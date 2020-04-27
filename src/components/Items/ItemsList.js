@@ -47,6 +47,7 @@ function ItemsList(props) {
               quantity={item.quantity}
               price={item.price}
               onRemoveItem={props.onRemoveItem}
+              onUpdateItem={props.onUpdateItem}
             ></Item>
           ))}
         </TableBody>
@@ -58,6 +59,7 @@ function ItemsList(props) {
 ItemsList.propTypes = {
   merchandiseList: PropTypes.array,
   onRemoveItem: PropTypes.func,
+  onUpdateItem: PropTypes.func,
 };
 
 export default ItemsList;
