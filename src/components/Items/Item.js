@@ -8,7 +8,7 @@ function Item(props) {
   const {
     onBuyItem,
     onRestockItem,
-    onEditItem,
+    onShowEditForum,
     onRemoveItem,
     id,
     color,
@@ -35,7 +35,7 @@ function Item(props) {
         <Button onClick={() => onRestockItem(id)}>Restock</Button>
       </TableCell>
       <TableCell>
-        <Button onClick={() => onEditItem(id)}>Edit</Button>
+        <Button onClick={() => onShowEditForum(id)}>Edit</Button>
       </TableCell>
       <TableCell>
         <Button onClick={() => onRemoveItem(id)}>Remove</Button>
@@ -54,7 +54,7 @@ Item.propTypes = {
   onRemoveItem: PropTypes.func,
   onBuyItem: PropTypes.func,
   onRestockItem: PropTypes.func,
-  onEditItem: PropTypes.func,
+  onShowEditForum: PropTypes.func,
 };
 
 export default Item;

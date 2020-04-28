@@ -20,9 +20,9 @@ function ItemsList(props) {
   const classes = useStyles();
   const {
     onBuyItem,
-    onEditItem,
     onRemoveItem,
     onRestockItem,
+    onShowEditForum,
     merchandiseList,
   } = props;
   return (
@@ -59,7 +59,7 @@ function ItemsList(props) {
                   onRemoveItem={onRemoveItem}
                   onRestockItem={onRestockItem}
                   onBuyItem={onBuyItem}
-                  onEditItem={onEditItem}
+                  onShowEditForum={onShowEditForum}
                 ></Item>
               );
             })}
@@ -76,6 +76,7 @@ ItemsList.propTypes = {
   onRestockItem: PropTypes.func,
   onRemoveItem: PropTypes.func,
   onEditItem: PropTypes.func,
+  onShowEditForum: PropTypes.func,
 };
 
 export default ItemsList;

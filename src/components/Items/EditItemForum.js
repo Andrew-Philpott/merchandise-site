@@ -1,8 +1,7 @@
-import { v4 } from "uuid";
 import React from "react";
 import PropTypes from "prop-types";
 import { Input, Button, makeStyles, Grid } from "@material-ui/core";
-import { FormControl, InputLabel, OutlinedInput } from "@material-ui/core";
+import { FormControl, InputLabel } from "@material-ui/core";
 
 const useStyles = makeStyles({
   forum: {
@@ -11,17 +10,20 @@ const useStyles = makeStyles({
   },
 });
 
-export default function UpdateItemForm(props) {
+export default function EditItemForm(props) {
   const classes = useStyles();
+  const { item } = props;
+  console.log(item.id);
+  // const { id } = item.id;
   function handleUpdateItemFormSubmission(event) {
     event.preventDefault();
-    props.onUpdateItem({
-      id: event.target.id.value,
+    props.onEditItem({
+      id: parseInt(item.id),
       name: event.target.name.value,
       description: event.target.description.value,
       color: event.target.color.value,
-      quantity: event.target.quantity.value,
-      price: event.target.price.value,
+      quantity: parseInt(event.target.quantity.value),
+      price: parseInt(event.target.price.value),
     });
   }
   return (
@@ -68,12 +70,12 @@ export default function UpdateItemForm(props) {
           </FormControl>
         </Grid>
       </Grid>
-      <Button type="submit">Create Item</Button>
+      <Button type="submit">Edit Item</Button>
     </form>
   );
 }
 
-UpdateItemForm.propTypes = {
-  onUpdateItem: PropTypes.func,
+EditItemForm.propTypes = {
+  onEditItem: PropTypes.func,
   buttonText: PropTypes.string,
 };
